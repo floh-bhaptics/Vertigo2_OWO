@@ -174,7 +174,7 @@ namespace Vertigo2_OWO
             }
         }
 
-        [HarmonyPatch(typeof(AmmoBelt), "TakeAmmo", new Type[] {  })]
+        [HarmonyPatch(typeof(AmmoBelt), "TakeAmmo", new Type[] { typeof(VertigoHand) })]
         public class bhaptics_TakeAmmo
         {
             [HarmonyPostfix]
@@ -363,7 +363,7 @@ namespace Vertigo2_OWO
             }
         }
 
-        [HarmonyPatch(typeof(VertigoCharacterController), "DoTeleportAnim", new Type[] { typeof(Vector3), typeof(Vector3), typeof(TeleportSurface) })]
+        [HarmonyPatch(typeof(VertigoCharacterController), "DoTeleportAnim", new Type[] { typeof(Vector3), typeof(TeleportSurface) })]
         public class bhaptics_Teleport
         {
             [HarmonyPostfix]
