@@ -484,7 +484,9 @@ namespace Vertigo2_OWO
                 tactsuitVr.LOG(" ");
                 */
                 float intensity = ((max_dist - distance)/max_dist) * ((max_dist - distance) / max_dist) * intensityScale;
-                if (intensity > 0.0f) tactsuitVr.PlayBackFeedback("Explosion", intensity);
+                if (intensity < 0.0f) return;
+                if (intensity < 0.8f) tactsuitVr.PlayBackFeedback("ExplosionDistant");
+                else tactsuitVr.PlayBackFeedback("Explosion");
             }
         }
 
