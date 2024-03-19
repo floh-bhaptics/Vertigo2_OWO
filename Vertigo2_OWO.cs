@@ -15,7 +15,7 @@ using Vertigo2;
 using Vertigo2.Player;
 using Valve.VR;
 
-[assembly: MelonInfo(typeof(Vertigo2_OWO.Vertigo2_OWO), "Vertigo2_OWO", "1.1.3", "Florian Fahrenberger")]
+[assembly: MelonInfo(typeof(Vertigo2_OWO.Vertigo2_OWO), "Vertigo2_OWO", "1.0.0", "Florian Fahrenberger")]
 [assembly: MelonGame("Zulubo Productions", "vertigo2")]
 
 namespace Vertigo2_OWO
