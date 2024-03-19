@@ -141,41 +141,28 @@ namespace MyOwoVest
 
         public void PlayBackHit(string pattern, float xzAngle, float yShift)
         {
-            if (FeedbackMap.ContainsKey(pattern))
+            string postfix = "";
+            // two parameters can be given to the pattern to move it on the vest:
+            // 1. An angle in degrees [0, 360] to turn the pattern to the left
+            // 2. A shift [-0.5, 0.5] in y-direction (up and down) to move it up or down
+            if ((xzAngle < 90f))
             {
-                Sensation sensation = FeedbackMap[pattern];
-                Muscle myMuscle = Muscle.Pectoral_R;
-                // two parameters can be given to the pattern to move it on the vest:
-                // 1. An angle in degrees [0, 360] to turn the pattern to the left
-                // 2. A shift [-0.5, 0.5] in y-direction (up and down) to move it up or down
-                if (sensation is SensationWithMuscles) { PlayBackFeedback(pattern); return; }
-                if ((xzAngle < 90f))
-                {
-                    if (yShift >= 0f) myMuscle = Muscle.Pectoral_L;
-                    else myMuscle = Muscle.Abdominal_L;
-                }
-                if ((xzAngle > 90f) && (xzAngle < 180f))
-                {
-                    if (yShift >= 0f) myMuscle = Muscle.Dorsal_L;
-                    else myMuscle = Muscle.Lumbar_L;
-                }
-                if ((xzAngle > 180f) && (xzAngle < 270f))
-                {
-                    if (yShift >= 0f) myMuscle = Muscle.Dorsal_R;
-                    else myMuscle = Muscle.Lumbar_R;
-                }
-                if ((xzAngle > 270f))
-                {
-                    if (yShift >= 0f) myMuscle = Muscle.Pectoral_R;
-                    else myMuscle = Muscle.Abdominal_R;
-                }
-                PlayBackFeedback(pattern, myMuscle);
+                postfix = "_FL";
             }
-            else
+            if ((xzAngle > 90f) && (xzAngle < 180f))
             {
-                LOG("Feedback not registered: " + pattern);
-                return;
+                postfix = "_BL";
             }
+            if ((xzAngle > 180f) && (xzAngle < 270f))
+            {
+                postfix = "_BR";
+            }
+            if ((xzAngle > 270f))
+            {
+                postfix = "_FR";
+            }
+            string myPattern = pattern + postfix;
+            PlayBackFeedback(myPattern);
 
         }
 
@@ -203,17 +190,17 @@ namespace MyOwoVest
         {
             if (isTwoHanded)
             {
-                PlayBackFeedback("EnlightenRecoil_both");
+                PlayBackFeedback("EnlighRecoil_both");
                 return;
             }
             if (isRightHand) PlayBackFeedback("EnlightenRecoil_R");
-            else PlayBackFeedback("EnlightenRecoil_L");
+            else PlayBackFeedback("EnlighRecoil_L");
         }
 
         public void MeatNailerRecoil(bool isRightHand, float intensity = 1.0f, bool isTwoHanded = false, bool supportHand = true)
         {
-            if (isRightHand) PlayBackFeedback("MeatnailerRecoil_R");
-            else PlayBackFeedback("MeatnailerRecoil_L");
+            if (isRightHand) PlayBackFeedback("MeatnailRecoil_R");
+            else PlayBackFeedback("MeatnailRecoil_L");
         }
 
         public void SwordRecoil(bool isRightHand, float intensity = 1.0f, bool isTwoHanded = false, bool supportHand = true)
@@ -224,8 +211,8 @@ namespace MyOwoVest
 
         public void ThrowRecoil(bool isRightHand, float intensity = 1.0f, bool isTwoHanded = false, bool supportHand = true)
         {
-            if (isRightHand) PlayBackFeedback("MeleeThrowRecoil_R");
-            else PlayBackFeedback("MeleeThrowRecoil_L");
+            if (isRightHand) PlayBackFeedback("ThrowRecoil_R");
+            else PlayBackFeedback("ThrowRecoil_L");
         }
 
         public void EjectMag(bool isRightHand)
@@ -236,7 +223,7 @@ namespace MyOwoVest
 
         public void GrabAmmo(bool isRightHand)
         {
-            if (isRightHand) PlayBackFeedback("´GrabAmmo_R");
+            if (isRightHand) PlayBackFeedback("GrabAmmo_R");
             else PlayBackFeedback("GrabAmmo_L");
         }
 

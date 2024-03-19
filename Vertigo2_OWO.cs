@@ -263,7 +263,7 @@ namespace Vertigo2_OWO
                 // Non-directional environmental feedback
                 if ((hit.damageType & DamageType.Fire) == DamageType.Fire)
                 {
-                    tactsuitVr.PlayBackFeedback("FlameThrower");
+                    tactsuitVr.PlayBackFeedback("Fire");
                     return;
                 }
                 if ((hit.damageType & DamageType.Poison) == DamageType.Poison)
@@ -296,50 +296,50 @@ namespace Vertigo2_OWO
                 // Directional feedback
                 float hitAngle;
                 float hitShift;
-                string damageType = "Impact";
+                string damageType = "Hit";
                 switch (hit.damageType)
                 {
                     case DamageType.Enlightenment:
-                        damageType = "Impact";
+                        damageType = "Hit";
                         break;
                     case DamageType.Bullet:
-                        damageType = "BulletHit";
+                        damageType = "Hit";
                         break;
                     case DamageType.Laser:
-                        damageType = "BulletHit";
+                        damageType = "Hit";
                         break;
                     case DamageType.Impact:
-                        damageType = "Impact";
+                        damageType = "Hit";
                         break;
                     case DamageType.Blade:
-                        damageType = "BladeHit";
+                        damageType = "Hit";
                         break;
                     case DamageType.Bite:
-                        damageType = "BulletHit";
+                        damageType = "Hit";
                         break;
                     case DamageType.Plasma:
-                        damageType = "BulletHit";
+                        damageType = "Hit";
                         break;
                     case DamageType.Heat:
-                        damageType = "LavaballHit";
+                        damageType = "Hit";
                         break;
                     case DamageType.Cold:
-                        damageType = "FreezeHit";
+                        damageType = "Hit";
                         break;
                     case DamageType.Electricity:
-                        damageType = "ElectricHit";
+                        damageType = "Hit";
                         break;
                     case DamageType.Antimatter:
-                        damageType = "Impact";
+                        damageType = "Hit";
                         break;
                     case DamageType.Hyperdimensional:
-                        damageType = "Impact";
+                        damageType = "Hit";
                         break;
                     case DamageType.Generic:
-                        damageType = "Impact";
+                        damageType = "Hit";
                         break;
                     default:
-                        damageType = "Impact";
+                        damageType = "Hit";
                         tactsuitVr.LOG("New damageType in hit: " + hit.damageType.ToString());
                         break;
                 }
@@ -379,7 +379,7 @@ namespace Vertigo2_OWO
             [HarmonyPostfix]
             public static void Postfix()
             {
-                tactsuitVr.PlayBackFeedback("LaunchLily");
+                tactsuitVr.PlayBackFeedback("LaunchPad");
             }
         }
 
@@ -389,7 +389,7 @@ namespace Vertigo2_OWO
             [HarmonyPostfix]
             public static void Postfix()
             {
-                tactsuitVr.PlayBackFeedback("LaunchLily");
+                tactsuitVr.PlayBackFeedback("LaunchPad");
             }
         }
 
@@ -423,7 +423,7 @@ namespace Vertigo2_OWO
             [HarmonyPostfix]
             public static void Postfix()
             {
-                tactsuitVr.PlayBackFeedback("ExplosionUp");
+                tactsuitVr.PlayBackFeedback("ShakeGround");
             }
         }
 
